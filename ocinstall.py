@@ -14,3 +14,6 @@ os.system('apt install -y \
   php7.4-ssh2 php7.4-xml php7.4-zip php7.4-apcu \
   php7.4-redis php7.4-ldap php-phpseclib')
 os.system('apt-get install -y php7.4-smbclient')
+os.system('echo "extension=smbclient.so" > /etc/php/7.4/mods-available/smbclient.ini')
+os.system('phpenmod smbclient')
+os.system('systemctl restart apache2')
