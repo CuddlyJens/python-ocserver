@@ -40,7 +40,7 @@ CREATE USER 'exampleuser'@'localhost' IDENTIFIED BY 'YourStrongPassword';
 ```
 ## Grant Privileges
 ```
-GRANT ALL PRIVILEGES ON [name-of-database].* TO 'exampleuser'@'localhost' IDENTIFIED BY 'YourStrongPassword'';
+GRANT ALL PRIVILEGES ON [name-of-database].* TO 'exampleuser'@'localhost' IDENTIFIED BY 'YourStrongPassword';
 ```
 ## Flush the Privileges
 ```
