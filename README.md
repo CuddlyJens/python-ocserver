@@ -5,7 +5,7 @@ This is a Python Script to install the ownCloud Server on a fresh installation o
 sudo git clone https://github.com/CuddlyJens/python-ocserver.git
 ```
 ```
-sudo python3 python-ocserver prep.py
+sudo python3 python-ocserver/prep.py
 ```
 # In the MySQL Installer
 ## Insert Root Password
