@@ -1,28 +1,34 @@
 import os
+os.system('apt install python3-pip -y')
+os.system('pip3 install pynput')
+from pynput.keyboard import Key, Controller
+import time
 
-# # update system
-# os.system('apt update && apt upgrade -y')
+keyboard = Controller()
 
-# # install Required and Recommended Packages, Configure Apache
-# os.system('sudo add-apt-repository ppa:ondrej/php -y')
-# os.system('sudo apt update && sudo apt upgrade -y')
-# os.system('apt install -y \
-#   apache2 \
-#   libapache2-mod-php7.4 \
-#   mariadb-server openssl redis-server wget \
-#   php7.4 php7.4-imagick php7.4-common php7.4-curl \
-#   php7.4-gd php7.4-imap php7.4-intl php7.4-json \
-#   php7.4-mbstring php7.4-gmp php7.4-bcmath php7.4-mysql \
-#   php7.4-ssh2 php7.4-xml php7.4-zip php7.4-apcu \
-#   php7.4-redis php7.4-ldap php-phpseclib')
-# os.system('apt-get install -y php7.4-smbclient')
-# os.system('echo "extension=smbclient.so" > /etc/php/7.4/mods-available/smbclient.ini')
-# os.system('phpenmod smbclient')
-# os.system('systemctl restart apache2')
-# os.system('apt install -y \
-#   unzip bzip2 rsync curl jq \
-#   inetutils-ping  ldap-utils\
-#   smbclient')
+# update system
+os.system('apt update && apt upgrade -y')
+
+# install Required and Recommended Packages, Configure Apache
+os.system('sudo add-apt-repository ppa:ondrej/php -y')
+os.system('sudo apt update && sudo apt upgrade -y')
+os.system('apt install -y \
+  apache2 \
+  libapache2-mod-php7.4 \
+  mariadb-server openssl redis-server wget \
+  php7.4 php7.4-imagick php7.4-common php7.4-curl \
+  php7.4-gd php7.4-imap php7.4-intl php7.4-json \
+  php7.4-mbstring php7.4-gmp php7.4-bcmath php7.4-mysql \
+  php7.4-ssh2 php7.4-xml php7.4-zip php7.4-apcu \
+  php7.4-redis php7.4-ldap php-phpseclib')
+os.system('apt-get install -y php7.4-smbclient')
+os.system('echo "extension=smbclient.so" > /etc/php/7.4/mods-available/smbclient.ini')
+os.system('phpenmod smbclient')
+os.system('systemctl restart apache2')
+os.system('apt install -y \
+  unzip bzip2 rsync curl jq \
+  inetutils-ping  ldap-utils\
+  smbclient')
 
 with open('/etc/apache2/sites-available/owncloud.conf', 'w') as file:
 
@@ -49,3 +55,59 @@ with open('/etc/apache2/sites-available/owncloud.conf', 'w') as file:
 
     file.writelines(VHC)
     file.close
+
+
+os.system('a2dissite 000-default')
+os.system('a2ensite owncloud.conf')
+
+# Install MySQL
+os.system('mysql_secure_installation')
+time.sleep(5)
+keyboard.press('Key.enter')
+keyboard.release('Key.enter')
+time.sleep(5)
+keyboard.press('n')
+keyboard.release('n')
+time.sleep(5)
+keyboard.press('n')
+keyboard.release('n')
+time.sleep(5)
+keyboard.press('Key.enter')
+keyboard.release('Key.enter')
+time.sleep(5)
+keyboard.press('Key.enter')
+keyboard.release('Key.enter')
+time.sleep(5)
+keyboard.press('Key.enter')
+keyboard.release('Key.enter')
+time.sleep(5)
+keyboard.press('Key.enter')
+keyboard.release('Key.enter')
+
+# Setup Database
+os.system('systemctl start mariadb')
+os.system('mysql -u root -p')
+os.system('testcloud')
+keyboard.type('CREATE DATABASE owncloud_db;')
+keyboard.type("GRANT ALL PRIVILEGES ON owncloud_db.* TO 'root'@'localhost' IDENTIFIED BY 'testcloud';")
+keyboard.type('FLUSH PRIVILEGES;')
+keyboard.type('quit;')
+
+# Enable the Recommendet Apache Modules
+os.system('a2enmod dir env headers mime rewrite setenvif')
+os.system('systemctl restart apache2')
+
+# Installation ownCloud
+os.system('cd /var/www/')
+os.system('wget https://download.owncloud.com/server/stable/owncloud-complete-latest.tar.bz2')
+os.system('tar -xjf owncloud-complete-latest.tar.bz2')
+os.system('chown -R www-data. owncloud')
+
+os.system('occ maintenance:install \
+    --database "mysql" \
+    --database-name "owncloud_db" \
+    --database-user "root" \
+    --database-pass "testcloud" \
+    --data-dir "/var/www/owncloud/data" \
+    --admin-user "admin" \
+    --admin-pass "admin')
