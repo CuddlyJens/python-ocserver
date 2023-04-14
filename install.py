@@ -7,6 +7,6 @@ print('done')
 # Installation ownCloud
 os.system('cd /var/www/')
 time.sleep(5)
-os.system("wget https://download.owncloud.com/server/stable/owncloud-complete-latest.tar.bz2 && \
+os.system('wget https://download.owncloud.com/server/stable/owncloud-complete-latest.tar.bz2 && \
 tar -xjf owncloud-complete-latest.tar.bz2 && \
-chown -R www-data. owncloud")
+chown -R www-data. owncloud')
