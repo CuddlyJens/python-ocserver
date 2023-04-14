@@ -1,7 +1,7 @@
 import os
 # update system
 os.system('apt update && apt upgrade -y')
-os.system('apt-get install nodejs')
+os.system('apt-get install nodejs -y')
 os.system('npm install mysql')
 
 os.system('FILE="/usr/local/bin/occ"')
