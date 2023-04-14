@@ -1,10 +1,6 @@
 import os
 # update system
 os.system('apt update && apt upgrade -y')
-from pynput.keyboard import Key, Controller
-import time
-
-keyboard = Controller()
 
 # install Required and Recommended Packages, Configure Apache
 os.system('sudo add-apt-repository ppa:ondrej/php -y')
@@ -59,40 +55,8 @@ os.system('a2ensite owncloud.conf')
 
 # Install MySQL
 os.system('mysql_secure_installation')
-time.sleep(5)
-keyboard.press('Key.enter')
-keyboard.release('Key.enter')
-time.sleep(5)
-keyboard.press('n')
-keyboard.release('n')
-time.sleep(5)
-keyboard.press('n')
-keyboard.release('n')
-time.sleep(5)
-keyboard.press('Key.enter')
-keyboard.release('Key.enter')
-time.sleep(5)
-keyboard.press('Key.enter')
-keyboard.release('Key.enter')
-time.sleep(5)
-keyboard.press('Key.enter')
-keyboard.release('Key.enter')
-time.sleep(5)
-keyboard.press('Key.enter')
-keyboard.release('Key.enter')
 
 # Setup Database
-os.system('systemctl start mariadb')
-os.system('mysql -u root -p')
-os.system('testcloud')
-keyboard.type('CREATE DATABASE owncloud_db;')
-time.sleep(5)
-keyboard.type("GRANT ALL PRIVILEGES ON owncloud_db.* TO 'root'@'localhost' IDENTIFIED BY 'testcloud';")
-time.sleep(5)
-keyboard.type('FLUSH PRIVILEGES;')
-time.sleep(5)
-keyboard.type('quit;')
-time.sleep(5)
 
 # Enable the Recommendet Apache Modules
 os.system('a2enmod dir env headers mime rewrite setenvif')
