@@ -65,6 +65,3 @@ os.system('a2ensite owncloud.conf')
 
 # Install MySQL
 os.system('mysql_secure_installation')
-os.system('apt install -y python3-pip')
-print('run "python3 -m install mysql-connector')
-print('run "python3 python-ocserver/mysql.py"')
