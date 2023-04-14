@@ -65,7 +65,7 @@ os.system('a2ensite owncloud.conf')
 
 # Install MySQL
 os.system('mysql_secure_installation')
-
+os.system('node mysql.js')
 # Enable the Recommendet Apache Modules
 os.system('a2enmod dir env headers mime rewrite setenvif')
 os.system('systemctl restart apache2')
