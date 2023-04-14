@@ -9,4 +9,8 @@ var con = mysql.createConnection({
 con.connect(function(err) {
     if (err) throw err;
     console.log("Connected!");
+    con.query("CREATE DATABASE owncloud", function (err, results) {
+        if(err) throw err;
+        console.log("Database created")
+    })
 });
