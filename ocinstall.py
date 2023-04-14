@@ -1,13 +1,12 @@
 import os
+# update system
+os.system('apt update && apt upgrade -y')
 os.system('apt install python3-pip -y')
 os.system('pip3 install pynput')
 from pynput.keyboard import Key, Controller
 import time
 
 keyboard = Controller()
-
-# update system
-os.system('apt update && apt upgrade -y')
 
 # install Required and Recommended Packages, Configure Apache
 os.system('sudo add-apt-repository ppa:ondrej/php -y')
