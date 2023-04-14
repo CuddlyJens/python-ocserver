@@ -89,9 +89,13 @@ os.system('systemctl start mariadb')
 os.system('mysql -u root -p')
 os.system('testcloud')
 keyboard.type('CREATE DATABASE owncloud_db;')
+time.sleep(5)
 keyboard.type("GRANT ALL PRIVILEGES ON owncloud_db.* TO 'root'@'localhost' IDENTIFIED BY 'testcloud';")
+time.sleep(5)
 keyboard.type('FLUSH PRIVILEGES;')
+time.sleep(5)
 keyboard.type('quit;')
+time.sleep(5)
 
 # Enable the Recommendet Apache Modules
 os.system('a2enmod dir env headers mime rewrite setenvif')
