@@ -50,3 +50,10 @@ FLUSH PRIVILEGES;
 ```
 quit;
 ```
+```
+sudo python3 python-ocserver/install.py
+```
+# Open your Browser and insert your IP Adress from your Ubunto Server
+Create your Admin Account. 
+Make sure to insert your correct Database Username, Password and Database Name. If you didn't change your Database location, you gonna use 'localhost' as it is in default mode.
+Complete the installation and log in with the admin credentials you created.
