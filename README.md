@@ -27,3 +27,27 @@ reboot
 # After reboot
 ## Login with root
 ```
+## Login mysql
+```
+mysql -u root -p
+```
+## Create Database
+```
+CREATE DATABASE [name-of-database];
+```
+## Create a user
+```
+CREATE USER 'exampleuser'@'localhost' IDENTIFIED BY 'YourStrongPassword';
+```
+## Grant Privileges
+```
+GRANT ALL PRIVILEGES ON [name-of-database].* TO 'exampleuser'@'localhost' IDENTIFIED BY 'YourStrongPassword'';
+```
+## Flush the Privileges
+```
+FLUSH PRIVILEGES;
+```
+## Quit out
+```
+quit;
+```
