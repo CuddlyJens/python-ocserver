@@ -1,4 +1,6 @@
 import os
+import warnings
+warnings.filterwarnings("ignore")
 # update system
 os.system('apt update && apt upgrade -y')
 os.system('apt install python3-pip -y')
