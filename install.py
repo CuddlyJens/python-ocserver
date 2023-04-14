@@ -8,11 +8,3 @@ os.system("cd /var/www/")
 os.system("wget https://download.owncloud.com/server/stable/owncloud-complete-latest.tar.bz2 && \
 tar -xjf owncloud-complete-latest.tar.bz2 && \
 chown -R www-data. owncloud")
-os.system('occ maintenance:install \
-    --database "mysql" \
-    --database-name "owncloud" \
-    --database-user "owncloud" \
-    --database-pass "testcloud" \
-    --data-dir "/var/www/owncloud/data" \
-    --admin-user "admin" \
-    --admin-pass "admin"')
