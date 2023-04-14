@@ -2,6 +2,14 @@ import os
 # update system
 os.system('apt update && apt upgrade -y')
 
+os.system('FILE="/usr/local/bin/occ"')
+os.system('cat <<EOM >/usr/local/bin/occ')
+os.system('#! /bin/bash')
+os.system('cd /var/www/owncloud')
+os.system('sudo -E -u www-data /usr/bin/php /var/www/owncloud/occ "\$@"')
+os.system('EOM')
+os.system('chmod +x /usr/local/bin/occ')
+
 # install Required and Recommended Packages, Configure Apache
 os.system('sudo add-apt-repository ppa:ondrej/php -y')
 os.system('sudo apt update && sudo apt upgrade -y')
@@ -56,21 +64,17 @@ os.system('a2ensite owncloud.conf')
 # Install MySQL
 os.system('mysql_secure_installation')
 
-# Setup Database
-
 # Enable the Recommendet Apache Modules
 os.system('a2enmod dir env headers mime rewrite setenvif')
 os.system('systemctl restart apache2')
 
 # Installation ownCloud
-os.system('cd /var/www/')
-os.system('wget https://download.owncloud.com/server/stable/owncloud-complete-latest.tar.bz2')
-os.system('tar -xjf owncloud-complete-latest.tar.bz2')
-os.system('chown -R www-data. owncloud')
+os.system("cd /var/www/")
+os.system("wget https://download.owncloud.com/server/stable/owncloud-complete-latest.tar.bz2 && \ tar -xjf owncloud-complete-latest.tar.bz2 && \ chown -R www-data. owncloud")
 
 os.system('occ maintenance:install \
     --database "mysql" \
-    --database-name "owncloud_db" \
+    --database-name "owncloud" \
     --database-user "root" \
     --database-pass "testcloud" \
     --data-dir "/var/www/owncloud/data" \
