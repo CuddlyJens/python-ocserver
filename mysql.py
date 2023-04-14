@@ -2,8 +2,8 @@ import mysql.connector
 
 owncloud = mysql.connector.connect(
     host="localhost",
-    user="owncloud",
-    passwd="testcloud",
+    user="root",
+    password="testcloud",
 )
 
 mycursor = owncloud.cursor()
