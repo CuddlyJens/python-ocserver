@@ -27,24 +27,25 @@ import os
 with open('/etc/apache2/sites-available/owncloud.conf', 'w') as file:
 
     VHC = [
-        "<VirtualHost *:80>",
-        "# uncommment the line below if variable was set",
-        "#ServerName \$my_domain",
-        "DirectoryIndex index.php index.html",
-        "DocumentRoot /var/www/owncloud",
-        "<Directory /var/www/owncloud>",
-        "  Options +FollowSymlinks -Indexes",
-        "  AllowOverride All",
-        "  Require all granted",
-        " ",
-        " <IfModule mod_dav.c>",
-        "  Dav off",
-        " </IfModule>",
-        " ",
-        " SetEnv HOME /var/www/owncloud",
-        " SetEnv HTTP_HOME /var/www/owncloud",
-        "</Directory>",
-        "</VirtualHost>",
+        "<VirtualHost *:80>\n",
+        "# uncommment the line below if variable was set\n",
+        "#ServerName \$my_domain\n",
+        "DirectoryIndex index.php index.html\n",
+        "DocumentRoot /var/www/owncloud\n",
+        "<Directory /var/www/owncloud>\n",
+        "  Options +FollowSymlinks -Indexes\n",
+        "  AllowOverride All\n",
+        "  Require all granted\n",
+        " \n",
+        " <IfModule mod_dav.c>\n",
+        "  Dav off\n",
+        " </IfModule>\n",
+        " \n",
+        " SetEnv HOME /var/www/owncloud\n",
+        " SetEnv HTTP_HOME /var/www/owncloud\n",
+        "</Directory>\n",
+        "</VirtualHost>\n",
     ]
 
     file.writelines(VHC)
+    file.close
