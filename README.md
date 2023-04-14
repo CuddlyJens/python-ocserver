@@ -26,7 +26,6 @@ reboot
 ```
 # After reboot
 ## Login with root
-```
 ## Login mysql
 ```
 mysql -u root -p
