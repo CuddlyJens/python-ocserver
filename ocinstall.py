@@ -1,8 +1,6 @@
 import os
 # update system
 os.system('apt update && apt upgrade -y')
-os.system('apt install python3-pip -y')
-os.system('python3 -m pip install pynput')
 from pynput.keyboard import Key, Controller
 import time
 
