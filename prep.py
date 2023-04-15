@@ -64,4 +64,4 @@ os.system('a2dissite 000-default')
 os.system('a2ensite owncloud.conf')
 
 # Install MySQL
-os.system('mysql_secure_installation')
+os.system('mysql_secure_installation') 

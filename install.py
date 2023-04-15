@@ -10,4 +10,4 @@ print("Current working directory: {0}".format(os.getcwd()))
 time.sleep(2)
 os.system('wget https://download.owncloud.com/server/stable/owncloud-complete-latest.tar.bz2 && \
 tar -xjf owncloud-complete-latest.tar.bz2 && \
-chown -R www-data. owncloud')
+chown -R www-data. owncloud') 
